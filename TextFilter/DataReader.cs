@@ -11,6 +11,28 @@
         CharsToRemove = charsToRemove;
     }
 
+    /// <summary>
+    /// This is for the edge cases where there are 2 words separated by a dot
+    /// This will return a new list of data rather than mutate the property
+    /// as I feel that this should be an optional function based on circumstances
+    /// </summary>
+    public IEnumerable<string> EdgeCaseProblem(IEnumerable<string> data)
+    {
+        
+        var correctedWords = new List<string>();
+        foreach (var item in data)
+        {
+            if (!item.Contains('.'))
+            {
+                correctedWords.Add(item);
+                continue;
+            }
+            correctedWords.AddRange(item.ToString().Split('.').ToList());
+
+        }
+        return correctedWords;
+
+    }
     public void CleanData()
     {
         foreach (var c in CharsToRemove)
@@ -22,21 +44,12 @@
     public IEnumerable<string> GetData()
     {
         CleanData();
-        return Data.Split(' ');
+        return EdgeCaseProblem(Data.Split(' '));
         
     }
 }
 
-// ======== edge case ===============================
-// words where there is a dot without a space throw an error
 
-//using (StreamWriter sw = new StreamWriter("correctedText.txt"))
-//{
-//    foreach (var word in text.ToString())
-//    {
-//        sw.Write(word);
-//    }
-//}
 
 
 

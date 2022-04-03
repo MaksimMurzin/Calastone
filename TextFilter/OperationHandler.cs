@@ -26,12 +26,12 @@ public static class OperationHandler
     }
 
     public static bool IsWordShorterThan(string word, int length) 
-        => word.Length <= length;
+        => word.Length < length;
 
-    public static bool IsWordLongerThan(string word, int length) 
-        =>word.Length > length;
+    public static bool IsWordLongerOrEqualTo(string word, int length) 
+        =>word.Length >= length;
 
-    public static bool DoesWordContainChars(string word, char offendingChar) 
+    public static bool DoesWordContainChar(string word, string offendingChar)
         => word.Contains(offendingChar);
 
     public static string GetMiddleChar(string word)

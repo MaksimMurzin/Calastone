@@ -3,19 +3,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TextFilterTests
 {
     [TestClass]
-    public class UnitTest1
+    public class SanityTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestEquality()
         {
             Assert.AreEqual(1, 1);
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void TestInequality()
         {
             Assert.AreNotEqual(1, 2);
 
         }
+
+        
     }
 }
